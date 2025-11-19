@@ -1,61 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.geometry.Insets?>
-<GridPane xmlns="http://javafx.com/javafx"
-          xmlns:fx="http://javafx.com/fxml"
-          fx:controller="pago.pago.view.VerificacionPagoView"
-          hgap="10" vgap="10">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="748.0" prefWidth="702.0" spacing="15" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pago.pago.view.VerificacionPagoView">
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <Label text="Id"/>
-    <TextField fx:id="txtId" GridPane.columnIndex="1"/>
+    <!-- Título -->
+    <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Verificación de Pago" />
 
-    <Button text="Buscar Por Id"
-            fx:id="btnBuscar"
-            GridPane.columnIndex="2"/>
+    <Separator />
 
-    <Label text="Id Pago" GridPane.rowIndex="1"/>
-    <TextField fx:id="txtIdPago" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <!-- Formulario -->
+    <GridPane hgap="10" vgap="10">
+        <!-- Id -->
+        <Label text="Id" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <TextField fx:id="txtId" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button fx:id="btnBuscar" text="Buscar Por Id" GridPane.columnIndex="2" GridPane.rowIndex="0" />
 
-    <Label text="Fecha" GridPane.rowIndex="2"/>
-    <TextField fx:id="txtFecha" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <!-- Id Pago -->
+        <Label text="Id Pago" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtIdPago" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-    <Label text="Resultado" GridPane.rowIndex="3"/>
-    <TextField fx:id="txtResultado" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <!-- Fecha -->
+        <Label text="Fecha" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtFecha" promptText="dd/MM/yyyy" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-    <Label text="Encargado" GridPane.rowIndex="4"/>
-    <TextField fx:id="txtEncargado" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <!-- Resultado -->
+        <Label text="Resultado" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtResultado" promptText="Aprobado/Rechazado" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-    <Label text="Observaciones" GridPane.rowIndex="5"/>
-    <TextArea fx:id="txtObservaciones" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <!-- Encargado -->
+        <Label text="Encargado" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtEncargado" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
-    <!-- Botones -->
-    <HBox spacing="10" GridPane.rowIndex="6" GridPane.columnSpan="2">
-        <Button fx:id="btnNuevo" text="Nuevo"/>
-        <Button fx:id="btnActualizar" text="Actualizar"/>
-        <Button fx:id="btnEliminar" text="Eliminar"/>
+        <!-- Observaciones -->
+        <Label text="Observaciones" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <TextArea fx:id="txtObservaciones" prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+    </GridPane>
+
+    <!-- Botones de Acción -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Button fx:id="btnNuevo" prefWidth="100" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Nuevo" />
+        <Button fx:id="btnActualizar" prefWidth="100" style="-fx-background-color: #2196F3; -fx-text-fill: white;" text="Actualizar" />
+    </HBox>
+
+    <Separator />
+
+    <!-- ComboBox de Verificaciones -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Verificaciones:" />
+        <ComboBox fx:id="comboVerificaciones" prefWidth="200" promptText="Seleccione una verificación" />
+        <Button fx:id="btnSeleccionar" style="-fx-background-color: #FF9800; -fx-text-fill: white;" text="Seleccionar" />
     </HBox>
 
     <!-- Tabla -->
-    <TableView fx:id="tabla" GridPane.rowIndex="7" GridPane.columnSpan="3">
+    <Label style="-fx-font-weight: bold;" text="Verificaciones De Pago" />
+    <TableView fx:id="tabla" prefHeight="197.0" prefWidth="662.0">
         <columns>
-            <TableColumn text="Id" fx:id="colId"/>
-            <TableColumn text="Id Pago" fx:id="colIdPago"/>
-            <TableColumn text="Fecha" fx:id="colFecha"/>
-            <TableColumn text="Resultado" fx:id="colResultado"/>
-            <TableColumn text="Encargado" fx:id="colEncargado"/>
+            <TableColumn fx:id="colId" prefWidth="80" text="Id" />
+            <TableColumn fx:id="colIdPago" prefWidth="100" text="Id Pago" />
+            <TableColumn fx:id="colFecha" prefWidth="100" text="Fecha" />
+            <TableColumn fx:id="colResultado" prefWidth="120" text="Resultado" />
+            <TableColumn fx:id="colEncargado" prefWidth="150" text="Encargado" />
         </columns>
     </TableView>
+     <Button fx:id="btnEliminar" prefWidth="100" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Eliminar" />
 
-</GridPane>
-
+</VBox>
