@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="700.0" prefWidth="1100.0" spacing="20" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="pago.pago.view.TransaccionRegistrarPagoView">
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25" />
+    </padding>
+
+    <!-- ENCABEZADO -->
+    <HBox alignment="CENTER" style="-fx-background-color: #4CAF50; -fx-padding: 15px; -fx-background-radius: 5px;">
+        <Label text="TRANSACCIÓN: REGISTRAR PAGO" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold;" />
+    </HBox>
+
+    <Label text="El cliente realiza un pago y el auxiliar lo registra en el sistema"
+           style="-fx-font-style: italic; -fx-text-fill: #666;" />
+
+    <!-- CONTENEDOR PRINCIPAL CON DOS COLUMNAS -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+
+        <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+        <VBox spacing="15" style="-fx-border-color: #ddd; -fx-border-width: 2; -fx-padding: 20; -fx-background-color: #fafafa;" HBox.hgrow="ALWAYS">
+
+            <Label text="PASO 1: Datos del Cliente" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4CAF50;" />
+            <Separator />
+
+            <GridPane hgap="15" vgap="12">
+                <Label text="Cliente:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="cmbCliente" promptText="Seleccione cliente..." prefWidth="300"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Cédula:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="lblCedula" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       style="-fx-text-fill: #666;" />
+
+                <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label fx:id="lblEmail" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       style="-fx-text-fill: #666;" />
+
+                <Label text="Teléfono:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <Label fx:id="lblTelefono" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                       style="-fx-text-fill: #666;" />
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" />
+                    <ColumnConstraints minWidth="300" />
+                </columnConstraints>
+            </GridPane>
+
+            <Label text="PASO 2: Datos de la Reserva" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4CAF50; -fx-padding: 10 0 0 0;" />
+            <Separator />
+
+            <GridPane hgap="15" vgap="12">
+                <Label text="Reserva:" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="cmbReserva" promptText="Seleccione reserva..." prefWidth="300"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <Label fx:id="lblCodigoReserva" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                       style="-fx-text-fill: #666;" />
+
+                <Label text="Fecha Reserva:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <Label fx:id="lblFechaReserva" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                       style="-fx-text-fill: #666;" />
+
+                <Label text="Total a Pagar:" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                <Label fx:id="lblTotalReserva" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                       style="-fx-text-fill: #2196F3; -fx-font-size: 18px; -fx-font-weight: bold;" />
+
+                <Label text="Estado Actual:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <Label fx:id="lblEstadoReserva" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                       style="-fx-text-fill: #FF9800; -fx-font-weight: bold;" />
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" />
+                    <ColumnConstraints minWidth="300" />
+                </columnConstraints>
+            </GridPane>
+
+            <Label text="PASO 3: Datos del Pago" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4CAF50; -fx-padding: 10 0 0 0;" />
+            <Separator />
+
+            <GridPane hgap="15" vgap="12">
+                <Label text="ID Pago:*" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtIdPago" promptText="Ej: PAG-004"
+                           GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Tipo de Pago:*" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-weight: bold;" />
+                <ComboBox fx:id="cmbTipoPago" promptText="Seleccione tipo..." prefWidth="300"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label text="Fecha de Pago:*" GridPane.columnIndex="0" GridPane.rowIndex="2" style="-fx-font-weight: bold;" />
+                <HBox spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <TextField fx:id="txtFechaPago" promptText="dd/MM/yyyy" prefWidth="150" />
+                    <Button fx:id="btnFechaHoy" text="📅 Hoy" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                </HBox>
+
+                <Label text="Valor del Pago:*" GridPane.columnIndex="0" GridPane.rowIndex="3" style="-fx-font-weight: bold;" />
+                <TextField fx:id="txtValorPago" promptText="Ej: 450000"
+                           GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label text="Referencia/Comprobante:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="txtReferencia" promptText="Número de referencia bancaria"
+                           GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label text="Observaciones:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <TextArea fx:id="txtObservaciones" promptText="Detalles adicionales del pago..."
+                          prefRowCount="3" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" />
+                    <ColumnConstraints minWidth="300" />
+                </columnConstraints>
+            </GridPane>
+
+            <!-- BOTONES DE ACCIÓN -->
+            <HBox spacing="15" alignment="CENTER" style="-fx-padding: 20 0 0 0;">
+                <Button fx:id="btnRegistrarPago" text="💾 REGISTRAR PAGO"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 15 40;"
+                        prefWidth="250" />
+                <Button fx:id="btnLimpiar" text="🗑 Limpiar"
+                        style="-fx-background-color: #757575; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10 30;" />
+            </HBox>
+        </VBox>
+
+        <!-- COLUMNA DERECHA: VISTA PREVIA Y LOG -->
+        <VBox spacing="15" style="-fx-border-color: #ddd; -fx-border-width: 2; -fx-padding: 20; -fx-background-color: #f9f9f9;" prefWidth="450">
+
+            <Label text="📋 RESUMEN DEL REGISTRO" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" />
+            <Separator />
+
+            <VBox spacing="8" style="-fx-padding: 15; -fx-background-color: white; -fx-border-color: #e0e0e0; -fx-border-radius: 5;">
+                <HBox spacing="10">
+                    <Label text="Cliente:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenCliente" text="No seleccionado" style="-fx-text-fill: #666;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Reserva:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenReserva" text="No seleccionada" style="-fx-text-fill: #666;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Total Reserva:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenTotal" text="\$0" style="-fx-text-fill: #2196F3; -fx-font-size: 16px;" />
+                </HBox>
+                <Separator />
+                <HBox spacing="10">
+                    <Label text="ID Pago:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenIdPago" text="-" style="-fx-text-fill: #666;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Tipo:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenTipo" text="-" style="-fx-text-fill: #666;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Valor:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenValor" text="\$0" style="-fx-text-fill: #4CAF50; -fx-font-size: 16px;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Fecha:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenFecha" text="-" style="-fx-text-fill: #666;" />
+                </HBox>
+                <HBox spacing="10">
+                    <Label text="Estado:" style="-fx-font-weight: bold; -fx-min-width: 100;" />
+                    <Label fx:id="lblResumenEstado" text="PENDIENTE"
+                           style="-fx-text-fill: #FF9800; -fx-font-weight: bold; -fx-font-size: 14px;" />
+                </HBox>
+            </VBox>
+
+            <Label text="⚠️ VALIDACIONES" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #FF9800;" />
+            <VBox fx:id="panelValidaciones" spacing="5" style="-fx-padding: 10; -fx-background-color: #fffacd; -fx-border-color: #ffc107; -fx-border-radius: 3;">
+                <Label text="✓ El pago se registrará en estado PENDIENTE" style="-fx-font-size: 12px;" />
+                <Label text="✓ Requiere verificación posterior para aprobarse" style="-fx-font-size: 12px;" />
+                <Label text="✓ La reserva quedará en PENDIENTE DE PAGO" style="-fx-font-size: 12px;" />
+            </VBox>
+
+            <Label text="📊 LOG DE TRANSACCIÓN" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" />
+            <TextArea fx:id="txtLog" editable="false" VBox.vgrow="ALWAYS"
+                      style="-fx-font-family: monospace; -fx-font-size: 11px; -fx-control-inner-background: #2d2d2d; -fx-text-fill: #00ff00;" />
+
+            <!-- BOTONES SECUNDARIOS -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnVerVerificaciones" text="📋 Ver Verificaciones (CRUD)"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                <Button fx:id="btnVerConsultas" text="📊 Ver Consultas"
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white;" />
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
